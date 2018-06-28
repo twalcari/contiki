@@ -67,11 +67,15 @@ extern resource_t
   res_plugtest_link3,
   res_plugtest_path,
   res_plugtest_separate,
-  res_plugtest_large,
+  res_mirror;
+
+
+#if CONTIKI_TARGET_NATIVE
+extern  res_plugtest_large,
   res_plugtest_large_update,
   res_plugtest_large_create,
-  res_plugtest_obs,
-  res_mirror;
+  res_plugtest_obs; 
+#endif
 
 PROCESS(plugtest_server, "PlugtestServer");
 AUTOSTART_PROCESSES(&plugtest_server);
@@ -112,10 +116,13 @@ PROCESS_THREAD(plugtest_server, ev, data)
   rest_activate_resource(&res_plugtest_link3, "link3");
   rest_activate_resource(&res_plugtest_path, "path");
   rest_activate_resource(&res_plugtest_separate, "separate");
+
+#if CONTIKI_TARGET_NATIVE
   rest_activate_resource(&res_plugtest_large, "large");
   rest_activate_resource(&res_plugtest_large_update, "large-update");
   rest_activate_resource(&res_plugtest_large_create, "large-create");
   rest_activate_resource(&res_plugtest_obs, "obs");
+#endif
 
   rest_activate_resource(&res_mirror, "mirror");
 

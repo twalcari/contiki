@@ -39,8 +39,8 @@
 #ifndef __ER_PLUGTEST_H__
 #define __ER_PLUGTEST_H__
 
-#if !defined(CONTIKI_TARGET_NATIVE)
-#warning "Should only be compiled for native!"
+#if !defined(CONTIKI_TARGET_NATIVE) || !defined(CONTIKI_TARGET_ZOUL)
+#warning "Should only be compiled for native or zoul!"
 #endif
 
 #define DEBUG 0

@@ -13,7 +13,11 @@ else
 ifeq ($(TARGET), native)
 REST_RESOURCES_FILES = $(notdir $(shell find $(REST_RESOURCES_DIR) -name '*.c'))
 else
+ifneq ($(TARGET), sky)
+REST_RESOURCES_FILES = $(notdir $(shell find $(REST_RESOURCES_DIR) -name '*.c' ! -name 'res-plugtest-large*' ! -name 'res-plugtest-obs*'))
+else
 REST_RESOURCES_FILES = $(notdir $(shell find $(REST_RESOURCES_DIR) -name '*.c' ! -name 'res-plugtest*'))
+endif
 endif
 endif
 

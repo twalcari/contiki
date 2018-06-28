@@ -39,8 +39,8 @@
 #ifndef __ER_PLUGTEST_H__
 #define __ER_PLUGTEST_H__
 
-#if !defined(CONTIKI_TARGET_NATIVE) || !defined(CONTIKI_TARGET_ZOUL)
-#warning "Should only be compiled for native or zoul!"
+#ifdef CONTIKI_TARGET_SKY
+#warning "Target sky is unsupported due to memory constraints!"
 #endif
 
 #define DEBUG 0
